@@ -1,0 +1,73 @@
+import { Component } from "react";
+
+class ScoreBoard extends Component{
+    state={count:0,
+    count2:0}
+    onincrement=()=>{
+        const{count}=this.state
+        // const{count2}=this.state
+        // console.log("kk");
+        this.setState(prevState=>{
+            
+            console.log(`previous value ${prevState.count+1}`);
+            return({count : prevState.count+1})
+            
+        })
+        // console.log("team-1 Count",count );
+    }
+    onincrement2=()=>{
+        const{count2}=this.state
+        // console.log("kk");
+        this.setState(prevState=>{
+            
+            // console.log(`previous value ${prevState.count2}`);
+            return({count2 : prevState.count2+1})
+            
+        })
+        // console.log("team-2 Count",count2 );
+    }
+    ondecrement=()=>{
+        this.setState(prevState=>{
+            return({count: prevState.count -1})
+        })
+
+    }
+    ondecrement2=()=>{
+        this.setState(prevState=>{
+            return({count2: prevState.count2 -1})
+        })
+
+    }
+    render(){
+        const{count}=this.state
+        const{count2}=this.state
+        return(
+            <div className=" text-center  p-2 d-flex flex-column justify-content-center mt-5">
+                <h1 className="text-center">Score Board</h1>
+                <div className="d-flex flex-row p-3 justify-content-center">
+                <div  className="m-3 border p-3 rounded-3" >
+
+<h3>Team 1</h3>
+<button className="btn  btn-danger" onClick={this.ondecrement}>-</button>
+<p className="d-inline m-5">{count}</p>
+<button className="btn  btn-primary" onClick={this.onincrement}>+</button>
+</div>
+<div  className="m-3 border p-3 rounded-3" >
+
+<h3>Team 2</h3>
+<button className="btn  btn-danger" onClick={this.ondecrement2}>-</button>
+<p className="d-inline m-5">{count2}</p>
+<button className="btn  btn-primary" onClick={this.onincrement2}>+</button>
+</div>
+                    
+                </div>
+
+                
+
+            </div>
+
+        )
+    }
+}
+
+export default ScoreBoard
